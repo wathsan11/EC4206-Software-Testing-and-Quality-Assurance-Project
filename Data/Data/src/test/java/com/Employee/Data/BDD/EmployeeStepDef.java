@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
 public class EmployeeStepDef {
 
     private EmployeeService empService;

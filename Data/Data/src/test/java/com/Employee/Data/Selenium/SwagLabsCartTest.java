@@ -11,10 +11,20 @@ import static org.junit.Assert.assertEquals;
 public class SwagLabsCartTest {
     WebDriver browser;
 
+    private boolean isCI() {
+        var gh = System.getenv("GITHUB_ACTIONS");
+        return gh != null && gh.equals("true");
+    }
+
     @Before
     public void beforeEach(){
         var options = new ChromeOptions();
         options.addArguments("--safe-mode");
+
+        if (isCI()) {
+            options.addArguments("--headless");
+        }
+
         options.addArguments("--incognito");
         //options.setCapability("webStockUrl",true);
         browser = new ChromeDriver(options);

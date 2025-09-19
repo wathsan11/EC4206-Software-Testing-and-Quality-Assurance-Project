@@ -11,10 +11,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class GoogleTest {
     WebDriver browser;
 
+    private boolean isCI() {
+        var gh = System.getenv("GITHUB_ACTIONS");
+        return gh != null && gh.equals("true");
+    }
+
     @Before
    public void beforeEach(){
         var options = new ChromeOptions();
         options.addArguments("--safe-mode");
+
+        if (isCI()) {
+            options.addArguments("--headless");
+        }
         options.setCapability("webSocketUrl",true);
         browser = new ChromeDriver(options);
     }

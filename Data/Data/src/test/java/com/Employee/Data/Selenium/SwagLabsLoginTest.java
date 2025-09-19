@@ -14,10 +14,19 @@ public class SwagLabsLoginTest {
 
     WebDriver browser;
 
+    private boolean isCI() {
+        var gh = System.getenv("GITHUB_ACTIONS");
+        return gh != null && gh.equals("true");
+    }
+
     @Before
     public void beforeEach(){
         var option = new ChromeOptions();
         option.addArguments("--safe-mode");
+
+        if (isCI()) {
+            option.addArguments("--headless");
+        }
         option.addArguments("--incognito");
         option.setCapability("webSocketUrl",true);
         browser =new ChromeDriver(option);
