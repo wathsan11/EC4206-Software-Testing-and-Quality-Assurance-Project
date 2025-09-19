@@ -13,4 +13,4 @@ jobs:
         run: ls 
 
       - name: run the tests
-        run: ./mvnw test
+        run: mvn test
