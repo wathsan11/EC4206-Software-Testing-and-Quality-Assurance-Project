@@ -13,5 +13,5 @@ jobs:
         run: ls 
 
       - name: run the tests
-        working-directory: ./EC4206-Software-Testing-and-Quality-Assurance-Project
+        working-directory: EC4206-Software-Testing-and-Quality-Assurance-Project
         run: mvn test
