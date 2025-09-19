@@ -1,3 +1,5 @@
+name: CI - Maven Build & Test
+
 on:
   push:
   workflow_dispatch:
@@ -6,12 +8,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get a clone of the repo
+      # Step 1: Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: list all the files
-        run: ls 
+      # Step 2: Debug - list all files recursively
+      - name: List all files
+        run: ls -R
 
-      - name: run the tests
-        working-directory: EC4206-Software-Testing-and-Quality-Assurance-Project/Data/Data
-        run: mvn test
+      # Step 3: Debug - list nested Data folder contents
+      - name: List Data folder
+        run: ls -R Data
+
+      # Step 4: Run Maven tests
+      - name: Run Maven tests
+        run: ./mvnw test
