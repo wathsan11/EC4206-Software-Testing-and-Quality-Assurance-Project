@@ -12,7 +12,6 @@ jobs:
       - name: list all the files
         run: ls 
 
-      - namw: run the tests
+      - name: run the tests
         run: ./mvnw test
 
-        
